@@ -62,11 +62,26 @@ class MainController: UIViewController {
         return button
     }()
     
+    lazy var users : [User] = []
+    lazy var usernamesText = ""
+
+    lazy var displayButton: UIButton = {
+            let button = UIButton()
+            button.addTarget(self, action: #selector(displayUsers), for: .touchUpInside)
+            button.setTitle("Current Users", for: .normal)
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = UIColor(red:130.0/255.0, green:150.0/255.0, blue:220.0/255.0, alpha: 1)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.layer.cornerRadius = 10
+            return button
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        [loginLabel, button, usernameField, passwordField].forEach { subView in subView.translatesAutoresizingMaskIntoConstraints = false
+        [loginLabel, button, usernameField, passwordField, displayButton].forEach { subView in subView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(subView)
         }
         
@@ -76,6 +91,18 @@ class MainController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+    @objc func displayUsers(){
+        NetworkManager.getAllUsers {usrs in
+                self.users = usrs[0].users!
+        }
+                
+        for username in users {
+                usernamesText = usernamesText + username.name!
+        }
+                
+        displayButton.setTitle(usernamesText, for: .normal)
     }
     
     func setUpConstraints() {
@@ -99,6 +126,10 @@ class MainController: UIViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
+            
+            displayButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            displayButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            displayButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 10),
             
         ])
     }
