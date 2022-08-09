@@ -19,7 +19,6 @@ import UIKit
 class Task {
     var name: String
     var date: String
-    
     var isDone: Bool
     
     init(name: String, date: String, isDone: Bool) {

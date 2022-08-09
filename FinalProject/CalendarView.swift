@@ -11,7 +11,9 @@ struct CustomData {
     var option: String
 }
 
-class CalendarView: UIViewController, ModelContainer {
+//class CalendarView: UIViewController, ModelContainer {
+
+class CalendarView: UIViewController {
     
     var internships: [Internship] = [] {
         didSet {
@@ -145,7 +147,8 @@ class CalendarView: UIViewController, ModelContainer {
         }
         var list = [Task]()
         for intshp in internships{
-            let name = "\(intshp.CompanyName ?? "name"): \(intshp.InternshipTitle ?? "title") Interview"
+            //let name = "\(intshp.CompanyName ?? "name"): \(intshp.InternshipTitle ?? "title") Interview"
+            let name = "\(intshp.CompanyName ?? "name") Interview"
             let date = "\(intshp.InterviewDate ?? "date")"
             let task = Task(name: name, date: date, isDone: false)
             list.append(task)

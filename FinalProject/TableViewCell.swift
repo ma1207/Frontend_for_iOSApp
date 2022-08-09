@@ -44,16 +44,16 @@ class InternshipTableViewCell: UITableViewCell {
             companyNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             companyNameLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
-        NSLayoutConstraint.activate([
-            internTitleLabel.leadingAnchor.constraint(equalTo: companyNameLabel.leadingAnchor, constant: 5),
-            internTitleLabel.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 5),
-            internTitleLabel.heightAnchor.constraint(equalToConstant: 30)
-        ])
+//        NSLayoutConstraint.activate([
+//            internTitleLabel.leadingAnchor.constraint(equalTo: companyNameLabel.leadingAnchor, constant: 5),
+//            internTitleLabel.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 5),
+//            internTitleLabel.heightAnchor.constraint(equalToConstant: 30)
+//        ])
     }
     
     func configure(internship: Internship) {
         companyNameLabel.text = internship.CompanyName
-        internTitleLabel.text = internship.InternshipTitle
+        //internTitleLabel.text = internship.InternshipTitle
     }
     
     required init?(coder: NSCoder) {

@@ -13,14 +13,15 @@ struct UserList: Codable {
 }
 
 struct User: Codable {
-    var id: String? = nil
+    var id: Int? = nil
     var name: String? = nil
     var internships: [Internship2]? = nil
 }
 
 struct Internship2: Codable {
-    var id: String? = nil
+    var id: Int? = nil
     var title: String? = nil
     var company: String? = nil
     var status: String? = nil
 }
+
