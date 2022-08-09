@@ -1,4 +1,4 @@
-# FinalProject
+# Frontend_for_iOSApp
 ## This is an iOS App that allows users to keep track of internships.
 # Prerequisite
 ## This project should be built on a MAC computer using Xcode.
